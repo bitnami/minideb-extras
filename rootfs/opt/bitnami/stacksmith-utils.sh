@@ -10,10 +10,12 @@ print_welcome_page() {
 }
 
 check_for_updates() {
-  if [ -n "$BITNAMI_APP_NAME" ]; then
-    check_for_image_updates
-  elif [ -n "$STACKSMITH_STACK_ID" ]; then
-    check_for_stack_updates
+  if [ -z "$DISABLE_UPDATE_CHECK" ]; then
+    if [ -n "$BITNAMI_APP_NAME" ]; then
+      check_for_image_updates
+    elif [ -n "$STACKSMITH_STACK_ID" ]; then
+      check_for_stack_updates
+    fi
   fi
 }
 
@@ -146,4 +148,3 @@ check_for_image_updates() {
     printf "\n$COLOR*** $MSG ***\e[0m\n\n"
   fi
 }
-
