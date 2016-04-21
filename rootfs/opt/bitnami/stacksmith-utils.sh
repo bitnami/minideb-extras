@@ -76,7 +76,7 @@ EndOfMessage
 
 # Checks for any updates for this Stacksmith stack
 check_for_stack_updates() {
-  ORIGIN="stacksmith"
+  ORIGIN=${BITNAMI_CONTAINER_ORIGIN:-stacksmith}
 
   RESPONSE=$(curl -s --connect-timeout 20 \
     --cacert /opt/bitnami/updates-ca-cert.pem \
