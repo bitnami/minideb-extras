@@ -11,6 +11,7 @@ print_usage() {
   echo "  unpack                     Download and unpack a package."
   echo ""
   echo "Options:"
+  echo "  -r, --repo                 Bitnami package repo (default: stacksmith)."
   echo "  -c, --checksum             SHA256 verification checksum."
   echo "  -h, --help                 Show this help message and exit."
   echo ""
@@ -27,7 +28,7 @@ print_usage() {
 }
 
 # break up command line for easy parsing and check legal options
-ARGS=$(getopt -o c:h -l "checksum:,help" -n "bitnami-pkg" -- "$@")
+ARGS=$(getopt -o r:c:h -l "repo:,checksum:,help" -n "bitnami-pkg" -- "$@")
 if [ $? -ne 0 ];
 then
   exit 1
@@ -36,6 +37,13 @@ fi
 eval set -- "$ARGS";
 while true; do
   case "$1" in
+    -r|--repo)
+      shift
+      if [ -n "$1" ]; then
+        PACKAGE_REPO=$1
+        shift
+      fi
+      ;;
     -c|--checksum)
       shift;
       if [ -n "$1" ]; then
@@ -78,6 +86,7 @@ CACHE_ROOT=/tmp/bitnami/pkg/cache
 PACKAGE="$2-linux-x64"
 PACKAGE_ARGS=${@:3}
 PACKAGE_NAME=$(echo $PACKAGE | sed 's/-[0-9].*//')
+PACKAGE_REPO=${PACKAGE_REPO:-stacksmith}
 
 mkdir -p $INSTALL_ROOT
 cd $INSTALL_ROOT
@@ -87,7 +96,7 @@ if [ -f $CACHE_ROOT/$PACKAGE.tar.gz ]; then
   echo "===> $CACHE_ROOT/$PACKAGE_NAME.tar.gz already exists, skipping download."
   cp $CACHE_ROOT/$PACKAGE.tar.gz .
 else
-  curl -sSLO https://downloads.bitnami.com/files/stacksmith/$PACKAGE.tar.gz
+  curl -sSLO https://downloads.bitnami.com/files/$PACKAGE_REPO/$PACKAGE.tar.gz
 fi
 
 if [ "$PACKAGE_SHA256" ]; then
