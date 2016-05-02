@@ -45,10 +45,10 @@ while true; do
       fi
       ;;
     -c|--checksum)
-      shift;
+      shift
       if [ -n "$1" ]; then
         PACKAGE_SHA256=$1
-        shift;
+        shift
       fi
       ;;
     -h|--help)
@@ -56,8 +56,8 @@ while true; do
       exit 0
       ;;
     --)
-      shift;
-      break;
+      shift
+      break
       ;;
   esac
 done
