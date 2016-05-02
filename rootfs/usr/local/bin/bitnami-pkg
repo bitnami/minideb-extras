@@ -23,7 +23,7 @@ print_usage() {
   echo "    \$ bitnami-pkg install nginx-1.9.10-0 --checksum 15565d06b18c2e3710fc08e579ddb3d0e39aa663264a0f7404f0743cb4cdb58d"
   echo ""
   echo "  - Install package with arguments"
-  echo "    \$ bitnami-pkg unpack mariadb-10.1.11-0 -- --password bitnami"
+  echo "    \$ bitnami-pkg install mariadb-10.1.11-0 -- --password bitnami"
   echo ""
   echo "  - Install package from testing"
   echo "    \$ bitnami-pkg install mariadb-10.1.11-0 --bucket testing"
