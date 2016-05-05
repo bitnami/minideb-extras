@@ -126,7 +126,7 @@ check_for_image_updates() {
 
   RESPONSE=$(curl -s --connect-timeout 20 \
     --cacert $BITNAMI_PREFIX/updates-ca-cert.pem \
-    "$UPDATE_SERVER/api/v1?image=$BITNAMI_APP_NAME&version=$BITNAMI_APP_VERSION&origin=$ORIGIN" \
+    "$UPDATE_SERVER/api/v1?image=$BITNAMI_APP_NAME&version=$BITNAMI_IMAGE_VERSION&origin=$ORIGIN" \
     -w "|%{http_code}")
 
   VERSION=$(echo $RESPONSE | cut -d '|' -f 1)
