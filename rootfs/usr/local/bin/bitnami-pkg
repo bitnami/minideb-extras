@@ -99,7 +99,13 @@ if [ -f $CACHE_ROOT/$PACKAGE.tar.gz ]; then
   echo "===> $CACHE_ROOT/$PACKAGE_NAME.tar.gz already exists, skipping download."
   cp $CACHE_ROOT/$PACKAGE.tar.gz .
 else
-  curl -sSLO https://downloads.bitnami.com/files/$RELEASE_BUCKET/$PACKAGE.tar.gz
+  # display cURL progress bar when a tty is attached
+  if tty -s; then
+    CURL_ARGS="-#"
+  else
+    CURL_ARGS="-sS"
+  fi
+  curl $CURL_ARGS -LO https://downloads.bitnami.com/files/$RELEASE_BUCKET/$PACKAGE.tar.gz
 fi
 
 if [ "$PACKAGE_SHA256" ]; then
