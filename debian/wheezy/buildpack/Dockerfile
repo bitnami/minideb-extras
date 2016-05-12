@@ -1,4 +1,4 @@
-FROM gcr.io/stacksmith-images/debian:wheezy-r06
+FROM gcr.io/stacksmith-images/debian:wheezy-r07
 
 RUN apt-get update && \
   DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y build-essential git pkg-config && \
