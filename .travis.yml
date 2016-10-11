@@ -1,0 +1,6 @@
+sudo: required
+language: generic
+services:
+  - docker
+script:
+  - DEV_BUILD=1 make build
