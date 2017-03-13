@@ -6,6 +6,12 @@ BITNAMI_PREFIX=/opt/bitnami
 UPDATE_SERVER="https://container.checkforupdates.com"
 CURL_ARGS="-sLf --connect-timeout 1 --speed-time 1 --speed-limit 1024"
 
+# turn off welcome and update notification if a tty is attached
+if tty -s; then
+  DISABLE_UPDATE_MESSAGE=1
+  DISABLE_WELCOME_MESSAGE=1
+fi
+
 # Color Palette
 RESET='\033[0m'
 BOLD='\033[1m'
