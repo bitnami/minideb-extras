@@ -5,7 +5,7 @@ jobs:
     docker:
       - image: docker:17.06.0-ce-git
         environment:
-          RELEASE_SERIES_LIST: "jessie"
+          RELEASE_SERIES_LIST: "jessie,stretch"
           LATEST_STABLE: "jessie"
           IMAGE_NAME: minideb-extras
           DOCKER_PROJECT: bitnami
