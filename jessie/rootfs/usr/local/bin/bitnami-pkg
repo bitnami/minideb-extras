@@ -4,7 +4,7 @@
 print_usage() {
   log "Usage: bitnami-pkg <COMMAND> <PACKAGE>-<VERSION> [OPTIONS] -- [ARGS]"
   log ""
-  log "Download and install Stacksmith packages"
+  log "Download and install Bitnami packages"
   log ""
   log "Commands:"
   log "  install                    Download and install a package."

@@ -50,8 +50,6 @@ print_welcome_page() {
   if [ -z "$DISABLE_WELCOME_MESSAGE" ]; then
     if [ -n "$BITNAMI_APP_NAME" ]; then
       print_image_welcome_page
-    elif [ -n "$STACKSMITH_STACK_ID" ]; then
-      print_stacksmith_welcome_page
     fi
   fi
 }
@@ -65,25 +63,5 @@ print_image_welcome_page() {
   log "Subscribe to project updates by watching ${BOLD}${GITHUB_PAGE}${RESET}"
   log "Submit issues and feature requests at ${BOLD}${GITHUB_PAGE}/issues${RESET}"
   log "Send us your feedback at ${BOLD}containers@bitnami.com${RESET}"
-  log ""
-}
-
-# Prints the welcome page for this Stacksmith stack
-print_stacksmith_welcome_page() {
-  STACKSMITH_URL="https://stacksmith.bitnami.com"
-  STACKSMITH_STACK_URL="$STACKSMITH_URL/dashboard/stacks/$STACKSMITH_STACK_ID"
-
-  if [ "$STACKSMITH_STACK_PRIVATE" ]; then
-    MSG1="Go to $STACKSMITH_STACK_URL to manage your stack."
-  else
-    MSG1="This stack was created anonymously."
-    MSG2="Sign up for a free account at $STACKSMITH_URL to manage and regenerate your stacks."
-  fi
-
-  log ""
-  log "${BOLD}Welcome to your $STACKSMITH_STACK_NAME container!${RESET}"
-  log "Brought to you by Bitnami."
-  log "$MSG1"
-  log "$MSG2"
   log ""
 }
