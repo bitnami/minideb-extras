@@ -1,4 +1,4 @@
-FROM bitnami/minideb@sha256:158ee896a0fc4c7ad0fdd6bde62434ea6cc003d5a21040b25573238c2b4453de
+FROM bitnami/minideb@sha256:7ed1bda8caed02991aca8fdd148df98e435e479c19af658f1b46c759b5f9ccf3
 LABEL maintainer "Bitnami <containers@bitnami.com>"
 
 RUN install_packages curl ca-certificates sudo locales procps libaio1 gnupg dirmngr && \
