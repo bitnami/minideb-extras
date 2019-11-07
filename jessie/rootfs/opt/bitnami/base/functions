@@ -1,6 +1,6 @@
 #!/bin/bash
 
-[[ $BASH_DEBUG ]] && set -x
+[[ ${BASH_DEBUG:-0} -eq 1 ]] && set -x
 
 BITNAMI_PREFIX=/opt/bitnami
 
